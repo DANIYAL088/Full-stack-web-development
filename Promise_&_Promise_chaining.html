@@ -1,0 +1,31 @@
+function adddb() {
+  return new Promise((resolve,reject) => {
+    let net = Math.floor(Math.random() * 10 + 1);
+    if (net > 4) {
+      resolve("success : fast net");
+    } else {
+      reject("Failure : week net");
+    }
+  });
+}
+
+// Promise chaining
+adddb()
+  .then((resolve) => {
+    console.log(resolve);
+    console.log("mesg 1 add :");
+    return adddb();
+  })
+  .then((resolve) => {
+    console.log(resolve);
+    console.log("mesg 2 add :");
+    return adddb();
+  })
+  .then((resolve) => {
+    console.log(resolve);
+    console.log("mesg 3 add :");
+  })
+  .catch((reject) => {
+    console.log(reject);
+    console.log("mesg 1 not add :");
+  });
